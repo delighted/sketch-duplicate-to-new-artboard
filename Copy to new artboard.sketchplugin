@@ -1,0 +1,61 @@
+// Copy to new artboard
+//
+// Copies the current selection(s) to new artboard(s).
+//
+// Copyright (c) 2015 Mike Gowen, Delighted Inc.
+
+if([selection count] == 0){
+  [doc showMessage:"Please select a layer."]
+} else {
+  for (var i=0; i < [selection count]; i++){
+    selectedItem = selection[i]
+    newArtboard = createNewArtboardFromSelection(selectedItem)
+    copySelectionToNewArtboard(selectedItem, newArtboard)
+  }
+}
+
+function createNewArtboardFromSelection(selectedItem) {
+  selectedItemRect = [selectedItem absoluteRect]
+  newArtboardWidth = [selectedItemRect width]
+  newArtboardHeight = [selectedItemRect height])
+  newArtboardX = rightmostX() + 10
+
+  newArtboard = [MSArtboardGroup new]
+  newArtboardFrame = [newArtboard frame]
+  [newArtboardFrame setWidth:newArtboardWidth]
+  [newArtboardFrame setHeight:newArtboardHeight]
+  [newArtboardFrame setX:newArtboardX]
+  [newArtboardFrame setY:0]
+
+  page = [doc currentPage]
+  [page addLayers:[NSArray arrayWithObjects:newArtboard]]
+
+  return newArtboard
+}
+
+function rightmostX() {
+  artboards = [[doc currentPage] artboards]
+  xPos = 0
+  loop = [artboards objectEnumerator]
+  while (artboard = [loop nextObject]) {
+    artboardRect = [artboard absoluteRect]
+    artboardMaxX = [artboardRect maxX]
+    if (artboardMaxX >= xPos) {
+      xPos = artboardMaxX
+    }
+  }
+  return xPos
+}
+
+function copySelectionToNewArtboard(selectedItem, newArtboard) {
+  selectedItemCopy = [selectedItem duplicate]
+  [[newArtboard layers] addObject:selectedItemCopy]
+
+  selectedItemCopyFrame = [selectedItemCopy frame]
+  [selectedItemCopyFrame setX:0]
+  [selectedItemCopyFrame setY:0]
+
+  parentGroup = [selectedItem parentGroup]
+  [parentGroup removeLayer:selectedItemCopy]
+}
+
