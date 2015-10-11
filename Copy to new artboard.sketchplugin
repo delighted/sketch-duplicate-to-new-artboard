@@ -20,7 +20,7 @@ function createNewArtboardFromSelection(selectedItem) {
   selectedItemRect = [selectedItem absoluteRect]
   newArtboardWidth = [selectedItemRect width]
   newArtboardHeight = [selectedItemRect height])
-  newArtboardX = rightmostArtboardX() + 20
+  newArtboardX = rightmostArtboardX() + 100
   newArtboardY = topmostArtboardY()
 
   newArtboard = [MSArtboardGroup new]
