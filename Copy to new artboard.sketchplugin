@@ -18,7 +18,7 @@ function createNewArtboardFromSelection(selectedItem) {
   selectedItemRect = [selectedItem absoluteRect]
   newArtboardWidth = [selectedItemRect width]
   newArtboardHeight = [selectedItemRect height])
-  newArtboardX = rightmostX() + 10
+  newArtboardX = rightmostArtboardX() + 10
 
   newArtboard = [MSArtboardGroup new]
   newArtboardFrame = [newArtboard frame]
@@ -33,7 +33,7 @@ function createNewArtboardFromSelection(selectedItem) {
   return newArtboard
 }
 
-function rightmostX() {
+function rightmostArtboardX() {
   artboards = [[doc currentPage] artboards]
   xPos = 0
   loop = [artboards objectEnumerator]
