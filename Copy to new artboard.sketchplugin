@@ -19,13 +19,14 @@ function createNewArtboardFromSelection(selectedItem) {
   newArtboardWidth = [selectedItemRect width]
   newArtboardHeight = [selectedItemRect height])
   newArtboardX = rightmostArtboardX() + 20
+  newArtboardY = topmostArtboardY()
 
   newArtboard = [MSArtboardGroup new]
   newArtboardFrame = [newArtboard frame]
   [newArtboardFrame setWidth:newArtboardWidth]
   [newArtboardFrame setHeight:newArtboardHeight]
   [newArtboardFrame setX:newArtboardX]
-  [newArtboardFrame setY:0]
+  [newArtboardFrame setY:newArtboardY]
 
   page = [doc currentPage]
   [page addLayers:[NSArray arrayWithObjects:newArtboard]]
@@ -35,16 +36,34 @@ function createNewArtboardFromSelection(selectedItem) {
 
 function rightmostArtboardX() {
   artboards = [[doc currentPage] artboards]
-  xPos = 0
+  firstArtboard = artboards[0]
+  firstArtboardRect = [firstArtboard absoluteRect]
+  maxXPos = [firstArtboardRect maxX]
   loop = [artboards objectEnumerator]
   while (artboard = [loop nextObject]) {
     artboardRect = [artboard absoluteRect]
     artboardMaxX = [artboardRect maxX]
-    if (artboardMaxX >= xPos) {
-      xPos = artboardMaxX
+    if (artboardMaxX >= maxXPos) {
+      maxXPos = artboardMaxX
     }
   }
-  return xPos
+  return maxXPos
+}
+
+function topmostArtboardY() {
+  artboards = [[doc currentPage] artboards]
+  firstArtboard = artboards[0]
+  firstArtboardRect = [firstArtboard absoluteRect]
+  minYPos = [firstArtboardRect minY]
+  loop = [artboards objectEnumerator]
+  while (artboard = [loop nextObject]) {
+    artboardRect = [artboard absoluteRect]
+    artboardMinY = [artboardRect minY]
+    if (artboardMinY <= minYPos) {
+      minYPos = artboardMinY
+    }
+  }
+  return minYPos
 }
 
 function copySelectionToNewArtboard(selectedItem, newArtboard) {
