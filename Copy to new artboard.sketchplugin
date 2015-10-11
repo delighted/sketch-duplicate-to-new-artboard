@@ -6,13 +6,15 @@
 
 if ([selection count] == 0) {
   [doc showMessage:"Please make a selection."]
-} else if ([[[doc currentPage] artboards] count] == 0) {
-  [doc showMessage:"You need to have at least one artboard."]
 } else {
-  for (var i=0; i < [selection count]; i++){
-    selectedItem = selection[i]
-    newArtboard = createNewArtboardFromSelection(selectedItem)
-    copySelectionToNewArtboard(selectedItem, newArtboard)
+  if ([[[doc currentPage] artboards] count] == 0) {
+    [doc showMessage:"You need to have at least one artboard."]
+  } else {
+    for (var i=0; i < [selection count]; i++){
+      selectedItem = selection[i]
+      newArtboard = createNewArtboardFromSelection(selectedItem)
+      copySelectionToNewArtboard(selectedItem, newArtboard)
+    }
   }
 }
 
