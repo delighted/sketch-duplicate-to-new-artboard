@@ -4,8 +4,10 @@
 //
 // Copyright (c) 2015 Mike Gowen, Delighted Inc.
 
-if([selection count] == 0){
+if ([selection count] == 0) {
   [doc showMessage:"Please make a selection."]
+} else if ([[[doc currentPage] artboards] count] == 0) {
+  [doc showMessage:"You need to have at least one artboard."]
 } else {
   for (var i=0; i < [selection count]; i++){
     selectedItem = selection[i]
