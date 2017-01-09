@@ -2,7 +2,7 @@
 //
 // Sketch plugin to duplicate the current selection(s) to new artboard(s).
 //
-// Copyright (c) 2016 Mike Gowen, Delighted Inc.
+// Copyright (c) 2017 Mike Gowen, Delighted Inc.
 
 onRun = function (context) {
 
