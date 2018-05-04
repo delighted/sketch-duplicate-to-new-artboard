@@ -1,0 +1,24 @@
+{
+  "name": "Duplicate to new artboard",
+  "description": "Sketch plugin to duplicate the current selection(s) to new artboard(s).",
+  "author": "Mike Gowen",
+  "authorEmail" : "mike@delighted.com",
+  "homepage": "https://github.com/delighted/sketch-duplicate-to-new-artboard",
+  "version": "3.0.0",
+  "identifier": "com.delighted.duplicate-to-new-artboard",
+  "compatibleVersion": 3,
+  "bundleVersion": 1,
+  "commands" : [
+    {
+      "script" : "./sketch-duplicate-to-new-artboard.js",
+      "name" : "Duplicate to new artboard",
+      "identifier" : "duplicate-to-new-artboard"
+    }
+  ],
+  "menu" : {
+    "isRoot" : true,
+    "items" : [
+      "duplicate-to-new-artboard"
+    ]
+  }
+}

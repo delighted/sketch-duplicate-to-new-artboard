@@ -1,0 +1,10 @@
+# build artifacts
+plugin.sketchplugin
+
+# npm
+node_modules
+.npm
+npm-debug.log
+
+# mac
+.DS_Store
