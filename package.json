@@ -1,7 +1,7 @@
 {
   "name": "sketch-duplicate-to-new-artboard",
   "description": "Sketch plugin to duplicate the current selection(s) to new artboard(s).",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "engines": {
     "sketch": ">=3.0"
   },
