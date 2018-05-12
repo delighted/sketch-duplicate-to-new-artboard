@@ -26,5 +26,6 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/delighted/sketch-duplicate-to-new-artboard"
-  }
+  },
+  "license": "MIT"
 }
