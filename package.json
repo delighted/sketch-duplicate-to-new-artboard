@@ -20,9 +20,6 @@
     "@skpm/builder": "^0.5.2"
   },
   "author": "Mike Gowen <mike@mikegowen.com>",
-  "dependencies": {
-    "sketch-utils": "^0.1.2"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/delighted/sketch-duplicate-to-new-artboard"
